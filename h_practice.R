@@ -1,0 +1,11 @@
+x <- as.POSIXct(c("2013-05-20 14:28", "2014-04-12 4:59", "2014-04-12 4:10", "2013-11-30 9:10", "2013-11-30 22:10")) 
+xHour <- strftime(x, format="%H:%M:%S")
+xHour <- sub(":", ".", xHour)
+xHour <- sub(":00", "", xHour)
+xHour <- as.double(xHour)
+
+xDate <- strftime(x, format="%Y-%m-%d")
+# plot(x, c(14.28, 4.59, 4.1, 9.1, 22.1), xaxt="n")
+plot(x, xHour, xaxt="n")
+axis.POSIXct(1, at = xDate, format = "%D")
+axis(2, at = seq(0,23))
